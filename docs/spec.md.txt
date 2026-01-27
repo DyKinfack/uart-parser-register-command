@@ -1,0 +1,40 @@
+# UART
+- Baudrate: 300000	Baudrate: 300000
+- Daten: 8 Bit		Data: 8 Bit
+- Parity: None
+- Stop Bits: 1
+
+# Register File
+- Anzahl: 64		Number: 64
+- Breite: 8 Bit	Width: 8
+- Reset-Wert: 0	Reset-Value: 0
+
+# Kommandoformat/ Commandoformat (For Example, Zum Beispiel)
+- WRITE: 0x57 ADDR DATA // 'W'
+- READ:  0x52 ADDR      // 'R'
+
+# Architectur
+
+UART_RX → CMD_PARSER → REG_FILE → RESPONSE_CTRL → UART_TX
+
++------------------+
+|   UART_RX (IP)   |   ← unverändert vom letzten Projekt
++------------------+
+          |
+          | rx_valid + rx_data
+          v
++------------------+
+|   CMD_PARSER     |   ← NEU
++------------------+
+          |
+          | reg_wr / reg_rd
+          v
++------------------+
+| REGISTER FILE    |   ← NEU
++------------------+
+          |
+          | read_data / status
+          v
++------------------+
+|   UART_TX (IP)   |   ← unverändert vom letzten Projekt
++------------------+
