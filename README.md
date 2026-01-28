@@ -14,8 +14,7 @@ Full verification using self-written testbenches
 System Architecture
 
 UART_RX  →  CMD_PARSER  →  REGISTER_FILE  →  UART_TX
-│                │
-└── control ─────┘
+
 
 Incoming bytes are received via UART_RX
 The CMD_PARSER decodes commands and addresses
