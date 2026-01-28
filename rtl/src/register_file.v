@@ -38,7 +38,7 @@ module register_file(
     
     reg start;
     reg status;
-    reg [7:0] ram[0:64];
+    reg [7:0] ram[0:63];
     integer i;
     
     reg [5:0] addr;
